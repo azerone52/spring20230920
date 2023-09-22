@@ -19,4 +19,10 @@ public class Controller01 {
     public void method3(){
         System.out.println("path2로 요청이 왔습니다.");
     }
+
+    // '/'생략 가능
+    @RequestMapping("path5")
+    public void method5(){
+        System.out.println("Controller01.method5");
+    }
 }
