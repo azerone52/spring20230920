@@ -18,7 +18,11 @@ public class Controller08 {
     public void method2(Model model){
         model.addAttribute("propOne","😎😎");
         model.addAttribute("propTwo","😂😂");
-
-
+    }
+    @RequestMapping("sub3")
+    public void method3(Model model){
+        model.addAttribute("myName","홍길동");
+        model.addAttribute("yourAddress","seoul");
+        model.addAttribute("herEmail","abc@google.com");
     }
 }
