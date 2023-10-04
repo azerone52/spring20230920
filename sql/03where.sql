@@ -28,3 +28,5 @@ SELECT ProductName, Price FROM products WHERE CategoryID=2;
 SELECT SupplierName, Phone FROM suppliers WHERE Country='Japan';
 -- 예) 2번 카테고리의 이름(categoryName) 조회
 SELECT CategoryName FROM categories WHERE CategoryID=2;
+
+SELECT ProductID, ProductName, Unit, Price FROM products;
