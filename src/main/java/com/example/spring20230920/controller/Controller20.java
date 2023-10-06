@@ -248,7 +248,7 @@ public class Controller20 {
     }
 
     @GetMapping("sub11")
-    public void method11(@RequestParam("country") List<String> country, Model model) throws SQLException {
+    public void method11(@RequestParam("country") List<String> country) throws SQLException {
         String questionMarks = "";
 
         for (int i = 0; i < country.size(); i++) {
