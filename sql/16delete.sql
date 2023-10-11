@@ -17,3 +17,4 @@ DELETE FROM employees WHERE EmployeeID >= 10;
 SELECT * FROM products;
 SELECT * FROM products WHERE ProductID >=78;
 DELETE FROM products WHERE ProductID >=78;
+
