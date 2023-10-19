@@ -77,4 +77,53 @@ public interface MyDao5 {
             </script>
             """)
     String select4(int i);
+
+
+    @Select("""
+    SELECT * 
+    FROM customers
+    WHERE CustomerName < 'a'
+    """)
+    String select5();
+
+    // CDATA : Character DATA
+    // -> 안에 어떤 기호가 써있더라도 태그로 인식하지 않게 해줌
+    // 문자로만 판단, 마크업 코드로 해석하지 말라
+    // "a section of element content that is marked for the parser to interpret as only character data, not markup."
+    @Select("""
+    <script>
+    <![CDATA[
+        SELECT * 
+        FROM customers
+        WHERE CustomerName < 'a'
+     ]]>
+    </script>
+    """)
+    String select6();
+
+    @Select("""
+    <script>
+    SELECT * FROM customers
+    WHERE 
+        Country IN 
+            <foreach collection = "args" item="elem" separator=", " open="(" close=")">
+                #{elem}
+            </foreach>
+    </script>
+    """)
+    String select7(List args);
+//  <foreach collection = "args" item = "elem" separator=" OR ">
+    //<trim prefixOverrides = "OR"> : 맨 앞에 있는 OR 삭제
+    //<trim prefix = "WHERE"> : trim 안에 내용물이 있을 시, 맨 앞에 WHERE 붙이기
+    @Select("""
+    <script>
+    SELECT * FROM customers
+        <trim prefix="WHERE" prefixOverrides = "OR">
+            <foreach collection = "args" item = "elem"> 
+             OR Country = #{elem}
+            </foreach>
+        </trim>
+    </script>
+    """)
+    String select8(List args);
 }
