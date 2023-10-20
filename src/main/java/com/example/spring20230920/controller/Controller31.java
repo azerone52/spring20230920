@@ -54,6 +54,6 @@ public class Controller31 {
         model.addAttribute("cityList", dao.listCustomerCity());
         model.addAttribute("countryList", dao.listCustomerCounty());
 
-        model.addAttribute("customerList", dao.listCu&estomer(dto));
+        model.addAttribute("customerList", dao.listCustomer(dto));
     }
 }
