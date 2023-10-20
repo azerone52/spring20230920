@@ -1,5 +1,6 @@
 package com.example.spring20230920.dao;
 
+import com.example.spring20230920.domain.MyDto36;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -126,4 +127,73 @@ public interface MyDao5 {
     </script>
     """)
     String select8(List args);
+
+    @Select("""
+    <script>
+    <bind name = "alterKeyword" value="'%'+keyword+'%'" />
+    SELECT * 
+    FROM customers
+    WHERE CustomerName LIKE #{alterKeyword}
+    </script>
+    """)
+    String select9(String keyword);
+
+    @Select("""
+    <script>
+        SELECT * FROM
+        WHERE 
+            <if test = "word == 'abc'">
+            -- word는 abc
+            </if>
+            <if test = 'word == "def"'>
+             -- word는 def
+            </if>
+            <if test="word == 'q'">
+             -- word는 q
+            </if>
+            <if test = 'word == "k"'>
+             -- word는 k
+            </if>
+    </script>
+    """)
+    String select10(String word);
+
+    @Select("""
+    SELECT DISTINCT City
+    FROM customers
+    WHERE City IS NOT NULL AND city != ''
+    ORDER BY 1
+    """)
+    List<String> listCustomerCity();
+
+    @Select("""
+    SELECT DISTINCT Country
+    FROM customers
+    WHERE Country IS NOT NULL AND Country != ''
+    ORDER BY 1
+    """)
+    List<String> listCustomerCounty();
+
+    @Select("""
+    <script>
+    SELECT CustomerName name, City, Country
+    FROM customers
+    <trim prefix="WHERE">
+        <if test = 'type == 1'>
+            city 
+                <foreach collection = "city" item = "elem" open="IN (" separator=", " close=")"> 
+                #{elem}
+                </foreach>
+        </if>
+        <if test = 'type == 2'>
+            country
+                <foreach collection = "country" item = "elem" open="IN (" separator=", " close=")">
+                #{elem}
+                </foreach>
+        </if>
+    </trim>
+    ORDER BY name
+    </script>
+    """)
+    List<Map<String, Objects>> listCustomer(MyDto36 dto);
 }
