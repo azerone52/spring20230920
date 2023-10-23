@@ -31,3 +31,5 @@ ROLLBACK ;
 COMMIT ;
 
 SELECT * FROM bank;
+
+
