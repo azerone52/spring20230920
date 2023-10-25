@@ -80,7 +80,7 @@ public class Controller36 {
     /*
     axios.delete("/main36/sub8?name=son")
     axios.delete("/main36/sub8", {
-           params: {id:"son"}
+           params: {name:"son"}
            });
     */
     @DeleteMapping("sub8")

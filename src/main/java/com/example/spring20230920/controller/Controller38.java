@@ -35,7 +35,7 @@ public class Controller38 {
     @ResponseBody
     public String method2(){
         try{
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         }catch (InterruptedException e){
 
         }
