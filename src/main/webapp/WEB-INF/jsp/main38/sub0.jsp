@@ -170,6 +170,7 @@
                 .then(response=>response.data)
                 // .then(data=>{let {price, birth, list, city} = data})
                 // .then(price=>console.log(price));
+                // {price, birth, list, city}=response.data와 같게 되므로 아래와 같은 코드로 분해 할당이 일어난다
                 .then(({price, birth, list, city})=>console.log(price));
         }
     </script>
@@ -178,6 +179,7 @@
     <button onclick="ajax12()">button12</button>
     <script>
         function ajax12(){
+            // response 된 값 중 data를 부분 분해 할당
             axios.get("/main38/sub4")
                 .then(({data})=>console.log(data.price));
         }
@@ -190,6 +192,7 @@
         function ajax13(){
             axios.get("/main38/sub4")
                 .then(response=>response.data)
+                // 분해 할당 할 때, 값이 없는 경우 default 값 제공
                 .then(({price, city, country="korea"})=>{
                     console.log(price);
                     console.log(city);
@@ -264,7 +267,7 @@
     console.log(city3);
     console.log(address3);
 
-    // 배열
+    // 배열의 분해 할당
     let g = [30, 40, 50];
 
     let [h, i, j] = g; // destructuring assignment
