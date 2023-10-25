@@ -236,6 +236,7 @@
     };
     let {email} = c; //부분만 분해 할당도 가능
 
+    // 이름 같으면 오류 발생
     let d = {
         name2: "lee",
         address: "paris",
