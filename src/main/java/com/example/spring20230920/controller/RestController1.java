@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -50,13 +52,24 @@ public class RestController1 {
 
     @GetMapping("sub5")
     @ResponseBody
-    public ResponseEntity<MyDto33Employee> method5(Integer id){
+    public Map<String, Object> method5(Integer id){
         MyDto33Employee employee = dao.getEmployeeById(id);
+        List<Integer> employeelist = dao.getEmployeeList();
+        Map<String, Object> map;
         if(employee==null){
-            return ResponseEntity.notFound().build();
+            map = Map.of("responseEntity", ResponseEntity.notFound().build(), "employeeList", employeelist);
+        }else{
+            map = Map.of("responseEntity", ResponseEntity.ok(employee), "employeeList", employeelist);
         }
-        return ResponseEntity.ok(employee);
+        return map;
     }
+//    public ResponseEntity<MyDto33Employee> method5(Integer id){
+//        MyDto33Employee employee = dao.getEmployeeById(id);
+//        if(employee==null){
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(employee);
+//    }
 
     @GetMapping("sub6")
     @ResponseBody
