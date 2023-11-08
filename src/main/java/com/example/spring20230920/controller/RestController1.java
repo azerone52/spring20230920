@@ -8,19 +8,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+//@Controller
+//@ResponseBody//모든메소드에적용
+@RestController //@Controller+@ResponseBody
 @RequiredArgsConstructor
 @RequestMapping("api/main1")
 public class RestController1 {
     private final MyDao10 dao;
 
     @GetMapping("sub1")
-    @ResponseBody
+//    @ResponseBody 생략 가능
     public String method1(){
         return "hello boot app!!";
     }
