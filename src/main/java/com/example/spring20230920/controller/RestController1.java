@@ -59,11 +59,12 @@ public class RestController1 {
         MyDto33Employee employee = dao.getEmployeeById(id);
         List<Integer> employeelist = dao.getEmployeeList();
         Map<String, Object> map;
-        if(employee==null){
-            map = Map.of("responseEntity", ResponseEntity.notFound().build(), "employeeList", employeelist);
-        }else{
-            map = Map.of("responseEntity", ResponseEntity.ok(employee), "employeeList", employeelist);
-        }
+//        if(employee==null){
+//            map = Map.of("responseEntity", ResponseEntity.notFound().build(), "employeeList", employeelist);
+//        }else{
+//            map = Map.of("responseEntity", ResponseEntity.ok(employee), "employeeList", employeelist);
+//        }
+        map=Map.of("responseEntity", employee, "employeeList", employeelist);
         return map;
     }
 //    public ResponseEntity<MyDto33Employee> method5(Integer id){
